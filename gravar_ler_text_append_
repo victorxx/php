@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <style>
+            form{
+            width:100%;
+            background-color: purple;
+            padding:20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 10px 10px 10px peru;
+            font-size: 30px;
+            overflow: hidden;
+        }
+        form input{
+            width:90%;
+            height: 150px;
+            padding:20px;
+            text-align: center;
+            font-size: 30px;
+            padding:20px;
+            border-radius: 10px;
+            box-shadow: 10px 10px 10px purple;
+        }
+        button{
+            width:40%;
+            height: 90px;
+            font-size: 30px;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 10px 10px 10px red;
+            border-radius: 12px;
+        }
+        </style>
+    </head>
+    <body>
+<form method="post">
+<input type="text" name="primeiro" placeholder="digite primeiro termo">
+<input type="text" name="segundo" placeholder="digite o segundo termo">
+<button type="submit">GRAVAR NO ARQUIVO</button>
+</form>
+    </body>
+    <?php
+    $arquivo="pasta/dado.txt";
+    if(!file_exists($arquivo)){
+        file_put_contents($arquivo,"");
+    }
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $primeiro=$_POST['primeiro'];
+        $segundo=$_POST['segundo'];
+
+        $conteudo.="Primeiro:$primeiro\n";
+        $conteudo.="Segundo:$segundo\n";
+        $conteudo.="-----------------------\n";
+        file_put_contents($arquivo,$conteudo,FILE_APPEND);
+        echo "<script>alert('ok')</script>";
+    }
+    ?>
+<?php
+$arquivo = "pasta/dado.txt";
+
+if(file_exists($arquivo)){
+    $linhas = file($arquivo, FILE_IGNORE_NEW_LINES); // remove \n
+    foreach($linhas as $linha){
+        if(str_contains($linha, "Primeiro:")){
+            // Remove "Nome:" e espaços extras
+            $nome = trim(str_replace("Primeiro:", "", $linha));
+            echo $nome . "<br>";
+        }
+    }
+} else {
+    echo "Arquivo não encontrado!";
+}
+?>
+
+</html>
