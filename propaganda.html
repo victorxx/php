@@ -1,0 +1,43 @@
+
+
+            <div class="fechar" style="
+            width:100px;
+            position:fixed;
+            height: 100px;
+            text-align: center;
+            cursor: pointer;
+            z-index: 100001;
+            font-size: 90px;
+            background-color:red;
+            "
+            onclick="ok()">x</div>
+            <div class="clicavel" style="
+            width:30%;
+            opacity: 0;
+            height: 330px;
+            position:fixed;
+            z-index: 10001;
+            background-color: orchid;
+            cursor: pointer;
+            position:fixed;
+            " onclick="window.location.href='https://www.espiritosanto-es.com.br/saopaulo/'"></div>
+            <div class="propaganda" style="
+                            width:30%;
+                            position:fixed;
+                            color:black;
+                            padding:20px;
+                            overflow: hidden;
+                            text-align: center;
+                            background-color: lime;
+                            height:330px;
+                            border-radius: 12px;
+            ">
+            </div>
+            <script>
+                function ok()
+                {
+                    document.querySelector('.fechar').style.display='none';
+                    document.querySelector('.propaganda').style.display='none';
+                    document.querySelector('.clicavel').style.display='none';
+                }
+            </script>
